@@ -50,10 +50,3 @@ simmarize-group_by
 chaining-functions-in-a-pipe
 take-aways-3
 additional-tutorials-3
-task-1-1
-task-2-1
-task-3-1
-task-4
-task-5
-task-6
-task-7
