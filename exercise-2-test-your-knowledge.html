@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Solutions | R for digital media analysis</title>
+  <title>Exercise 2: Test your knowledge | R for digital media analysis</title>
   <meta name="description" content="Digital industry: Current developments and challenges - B.A. Seminar at the IfKW, SS 2022" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Solutions | R for digital media analysis" />
+  <meta property="og:title" content="Exercise 2: Test your knowledge | R for digital media analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Solutions | R for digital media analysis" />
+  <meta name="twitter:title" content="Exercise 2: Test your knowledge | R for digital media analysis" />
   
   <meta name="twitter:description" content="Digital industry: Current developments and challenges - B.A. Seminar at the IfKW, SS 2022" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="exercise-2-test-your-knowledge.html"/>
-
+<link rel="prev" href="tutorial-data-management-with-tidyverse.html"/>
+<link rel="next" href="solutions.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -262,250 +262,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="solutions" class="section level1 unnumbered">
-<h1>Solutions</h1>
-<p>This is where you’ll find solutions for all of the tutorials.</p>
-<div id="solutions-for-exercise-1" class="section level2 unnumbered">
-<h2>Solutions for Exercise 1</h2>
-<div id="task-1-2" class="section level3 unnumbered">
-<h3>Task 1</h3>
-<p>Below you will see multiple choice questions. Please try to identify the correct answers. 1, 2, 3 and 4 correct answers are possible for each question.</p>
-<p><strong>1. What panels are part of RStudio?</strong></p>
-<p><em>Solution:</em></p>
+<div id="exercise-2-test-your-knowledge" class="section level1 unnumbered">
+<h1>Exercise 2: Test your knowledge</h1>
+<p><strong>After working through Exercise 2, you’ll…</strong></p>
 <ul>
-<li>source (x)</li>
-<li>console (x)</li>
-<li>packages, files &amp; plots (x)</li>
+<li>have assessed how well you know <code>dplyr</code></li>
+<li>know what <code>dplyr</code> functions and concepts you might want to repeat again</li>
+<li>have managed to apply the <code>dplyr</code> concepts to data</li>
 </ul>
-<p><strong>2. How do you activate R packages after you have installed them?</strong></p>
-<p><em>Solution:</em></p>
-<ul>
-<li>library() (x)</li>
-</ul>
-<p><strong>3. How do you create a vector in R with elements 1, 2, 3?</strong></p>
-<p><em>Solution:</em></p>
-<ul>
-<li>c(1,2,3) (x)</li>
-</ul>
-<p><strong>4. Imagine you have a vector called ‘vector’ with 10 numeric elements. How do you retrieve the 8th element?</strong></p>
-<p><em>Solution:</em></p>
-<ul>
-<li>vector[8] (x)</li>
-</ul>
-<p><strong>5. Imagine you have a vector called ‘hair’ with 5 elements: brown, black, red, blond, other. How do you retrieve the color ‘blond’?</strong></p>
-<p><em>Solution:</em></p>
-<ul>
-<li>hair[4] (x)</li>
-</ul>
-</div>
-<div id="task-2-2" class="section level3 unnumbered">
-<h3>Task 2</h3>
-<p>Create a numeric vector with 8 values and assign the name <em>age</em> to the vector. First, display all elements of the vector. Then print only the 5th element. After that, display all elements except the 5th. Finally, display the elements at the positions 6 to 8.</p>
-<p><em>Solution:</em></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="solutions.html#cb144-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>,<span class="dv">52</span>,<span class="dv">73</span>,<span class="dv">71</span>,<span class="dv">80</span>,<span class="dv">62</span>,<span class="dv">68</span>,<span class="dv">87</span>)</span>
-<span id="cb144-2"><a href="solutions.html#cb144-2" aria-hidden="true" tabindex="-1"></a>age</span></code></pre></div>
-<pre><code>## [1] 65 52 73 71 80 62 68 87</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="solutions.html#cb146-1" aria-hidden="true" tabindex="-1"></a>age[<span class="dv">5</span>]</span></code></pre></div>
-<pre><code>## [1] 80</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="solutions.html#cb148-1" aria-hidden="true" tabindex="-1"></a>age[<span class="sc">-</span><span class="dv">5</span>]</span></code></pre></div>
-<pre><code>## [1] 65 52 73 71 62 68 87</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="solutions.html#cb150-1" aria-hidden="true" tabindex="-1"></a>age[<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>]</span></code></pre></div>
-<pre><code>## [1] 62 68 87</code></pre>
-</div>
-<div id="task-3-2" class="section level3 unnumbered">
-<h3>Task 3</h3>
-<p>Create a non-numeric, i.e. character, vector with 4 elements and assign the name <em>eye_color</em> to the vector. First, print all elements of this vector to the console. Then have only the value in the 2nd element displayed, then all values except the 2nd element. At the end, display the elements at the positions 2 to 4.</p>
-<p><em>Solution:</em></p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="solutions.html#cb152-1" aria-hidden="true" tabindex="-1"></a>eye_color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;other&quot;</span>)</span>
-<span id="cb152-2"><a href="solutions.html#cb152-2" aria-hidden="true" tabindex="-1"></a>eye_color</span></code></pre></div>
-<pre><code>## [1] &quot;blue&quot;  &quot;green&quot; &quot;brown&quot; &quot;other&quot;</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="solutions.html#cb154-1" aria-hidden="true" tabindex="-1"></a>eye_color[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;green&quot;</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="solutions.html#cb156-1" aria-hidden="true" tabindex="-1"></a>eye_color[<span class="sc">-</span><span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;blue&quot;  &quot;brown&quot; &quot;other&quot;</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="solutions.html#cb158-1" aria-hidden="true" tabindex="-1"></a>eye_color[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;green&quot; &quot;brown&quot; &quot;other&quot;</code></pre>
-</div>
-</div>
-<div id="solutions-for-exercise-2" class="section level2 unnumbered">
-<h2>Solutions for Exercise 2</h2>
-<div id="task-1-3" class="section level3 unnumbered">
-<h3>Task 1</h3>
+<div id="task-1-1" class="section level2 unnumbered">
+<h2>Task 1</h2>
 <p>Below you will see multiple choice questions. Please try to identify the correct answers. 1, 2, 3 and 4 correct answers are possible for each question.</p>
 <p><strong>1. What are the main characteristics of tidy data?</strong></p>
-<p><em>Solution:</em></p>
 <ul>
-<li>Every observation is a row. (x)</li>
+<li>Every cell contains values.</li>
+<li>Every cell contains a variable.</li>
+<li>Every observation is a column.</li>
+<li>Every observation is a row.</li>
 </ul>
 <p><strong>2. What are <code>dplyr</code> functions?</strong></p>
-<p><em>Solution:</em></p>
 <ul>
-<li><code>mutate()</code> (x)</li>
+<li><code>summary()</code></li>
+<li><code>describe()</code></li>
+<li><code>mutate()</code></li>
+<li><code>manage()</code></li>
 </ul>
 <p><strong>3. How can you sort the eye_color of Star Wars characters from Z to A?</strong></p>
-<p><em>Solution:</em></p>
 <ul>
-<li><code>starwars_data %&gt;% arrange(desc(eye_color))</code> (x)</li>
-<li><code>starwars_data %&gt;% select(eye_color) %&gt;% arrange(desc(eye_color))</code> (x)</li>
+<li><code>starwars_data %&gt;% arrange(desc(eye_color))</code></li>
+<li><code>starwars_data %&gt;% arrange(eye_color)</code></li>
+<li><code>starwars_data %&gt;% select(arrange(eye_color))</code></li>
+<li><code>starwars_data %&gt;% select(eye_color) %&gt;% arrange(desc(eye_color))</code></li>
 </ul>
 <p><strong>4. Imagine you want to recode the height of the these characters. You want to have three categories from small and medium to tall. What is a valid approach?</strong></p>
-<p><em>Solution:</em></p>
 <ul>
-<li><code>starwars_data %&gt;% mutate(height = case_when(height&lt;=150~"small",height&lt;=190~"medium",height&gt;190~"tall"))</code> (x)</li>
+<li><code>starwars_data %&gt;% mutate(height = case_when(height&lt;=150~"small",height&lt;=190~"medium",height&gt;190~"tall"))</code></li>
+<li><code>starwars_data %&gt;% mutate(height = case_when(height&lt;=150~small,height&lt;=190~medium,height&gt;190~tall))</code></li>
+<li><code>starwars_data %&gt;% recode(height = case_when(height&lt;=150~"small",height&lt;=190~"medium",height&gt;190~"tall"))</code></li>
+<li><code>starwars_data %&gt;% recode(height = case_when(height&lt;=150~small,height&lt;=190~medium,height&gt;190~tall))</code></li>
 </ul>
 <p><strong>5. Imagine you want to provide a systematic overview over all hair colors and what species wear these hair colors frequently (not accounting for the skewed sampling of species)? What is a valid approach?</strong></p>
-<p><em>Solution:</em></p>
 <ul>
-<li><code>starwars_data %&gt;% group_by(hair_color, species) %&gt;% summarize(count = n()) %&gt;% arrange(hair_color)</code> (x)</li>
+<li><code>starwars_data %&gt;% group_by(hair_color) %&gt;% group_by(species) %&gt;% summarize(count = n()) %&gt;% arrange(hair_color)</code></li>
+<li><code>starwars_data %&gt;% group_by(hair_color, species) %&gt;% summarize(count = n()) %&gt;% arrange(hair_color)</code></li>
+<li><code>starwars_data %&gt;% group_by(hair_color &amp; species) %&gt;% summarize(count = n()) %&gt;% arrange(hair_color)</code></li>
+<li><code>starwars_data %&gt;% group_by(hair_color + species) %&gt;% summarize(count = n()) %&gt;% arrange(hair_color)</code></li>
 </ul>
 </div>
-<div id="task-2-3" class="section level3 unnumbered">
-<h3>Task 2</h3>
-<p>Now it’s you turn. Load the starwars data like this:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="solutions.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)              <span class="co"># to activate the dplyr package</span></span>
-<span id="cb160-2"><a href="solutions.html#cb160-2" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="ot">&lt;-</span> starwars   <span class="co"># to assign the pre-installed starwars data set (dplyr) into a source object in our environment</span></span></code></pre></div>
-<p>How many humans are contained in the starwars data overall? (Hint: use <code>summarize(count = n())</code> or <code>count()</code>)?</p>
-<p><em>Solution:</em></p>
-<p>You can use <code>summarize(count = n())</code>:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="solutions.html#cb161-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb161-2"><a href="solutions.html#cb161-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb161-3"><a href="solutions.html#cb161-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##   count
-##   &lt;int&gt;
-## 1    35</code></pre>
-<p>Alternatively, you can use the <code>count()</code> function:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="solutions.html#cb163-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb163-2"><a href="solutions.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb163-3"><a href="solutions.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
-##   species     n
-##   &lt;chr&gt;   &lt;int&gt;
-## 1 Human      35</code></pre>
+<div id="task-2-1" class="section level2 unnumbered">
+<h2>Task 2</h2>
+<p>It’s you turn now. Load the starwars data like this:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="exercise-2-test-your-knowledge.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)              <span class="co"># to activate the dplyr package</span></span>
+<span id="cb143-2"><a href="exercise-2-test-your-knowledge.html#cb143-2" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="ot">&lt;-</span> starwars   <span class="co"># to assign the pre-installed starwars data set (dplyr) into a source object in our environment</span></span></code></pre></div>
+<p>How many humans are contained in the starwars data overall? (Hint: use <code>summarize(count = n())</code> or <code>count()</code>)</p>
 </div>
-<div id="task-3-3" class="section level3 unnumbered">
-<h3>Task 3</h3>
+<div id="task-3-1" class="section level2 unnumbered">
+<h2>Task 3</h2>
 <p>How many humans are contained in starwars by gender?</p>
-<p><em>Solution:</em></p>
-<p>You can use <code>summarize(count = n())</code>:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="solutions.html#cb165-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb165-2"><a href="solutions.html#cb165-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb165-3"><a href="solutions.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb165-4"><a href="solutions.html#cb165-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
-## # Groups:   species [1]
-##   species gender    count
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;
-## 1 Human   feminine      9
-## 2 Human   masculine    26</code></pre>
-<p>Alternatively, you can use the <code>count()</code> function:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="solutions.html#cb167-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb167-2"><a href="solutions.html#cb167-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb167-3"><a href="solutions.html#cb167-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species, gender)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
-##   species gender        n
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;
-## 1 Human   feminine      9
-## 2 Human   masculine    26</code></pre>
 </div>
-<div id="task-4-1" class="section level3 unnumbered">
-<h3>Task 4</h3>
-<p>What is the most common eye_color among Star Wars characters? (Hint: use <code>arrange()</code>)__</p>
-<p><em>Solution:</em></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="solutions.html#cb169-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb169-2"><a href="solutions.html#cb169-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(eye_color) <span class="sc">%&gt;%</span> </span>
-<span id="cb169-3"><a href="solutions.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb169-4"><a href="solutions.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span></code></pre></div>
-<pre><code>## # A tibble: 15 x 2
-##    eye_color     count
-##    &lt;chr&gt;         &lt;int&gt;
-##  1 brown            21
-##  2 blue             19
-##  3 yellow           11
-##  4 black            10
-##  5 orange            8
-##  6 red               5
-##  7 hazel             3
-##  8 unknown           3
-##  9 blue-gray         1
-## 10 dark              1
-## 11 gold              1
-## 12 green, yellow     1
-## 13 pink              1
-## 14 red, blue         1
-## 15 white             1</code></pre>
+<div id="task-4" class="section level2 unnumbered">
+<h2>Task 4</h2>
+<p>What is the most common eye_color among Star Wars characters? (Hint: use <code>arrange()</code>)</p>
 </div>
-<div id="task-5-1" class="section level3 unnumbered">
-<h3>Task 5</h3>
-<p>What is the average mass of Star Wars characters that are not human and have yellow eyes? (Hint: remove all <code>NAs</code>)__</p>
-<p><em>Solution:</em></p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="solutions.html#cb171-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb171-2"><a href="solutions.html#cb171-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">&quot;Human&quot;</span> <span class="sc">&amp;</span> eye_color<span class="sc">==</span><span class="st">&quot;yellow&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb171-3"><a href="solutions.html#cb171-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##   mean_mass
-##       &lt;dbl&gt;
-## 1      74.1</code></pre>
+<div id="task-5" class="section level2 unnumbered">
+<h2>Task 5</h2>
+<p>What is the average mass of Star Wars characters that are not human and have yellow eyes? (Hint: remove all <code>NAs</code>)</p>
 </div>
-<div id="task-6-1" class="section level3 unnumbered">
-<h3>Task 6</h3>
-<p>Compare the mean, median, and standard deviation of mass for all humans and droids. (Hint: remove all <code>NAs</code>)__</p>
-<p><em>Solution:</em></p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="solutions.html#cb173-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb173-2"><a href="solutions.html#cb173-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species<span class="sc">==</span><span class="st">&quot;Human&quot;</span> <span class="sc">|</span> species<span class="sc">==</span><span class="st">&quot;Droid&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb173-3"><a href="solutions.html#cb173-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span>                                </span>
-<span id="cb173-4"><a href="solutions.html#cb173-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">M =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb173-5"><a href="solutions.html#cb173-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Med =</span> <span class="fu">median</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb173-6"><a href="solutions.html#cb173-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD =</span> <span class="fu">sd</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb173-7"><a href="solutions.html#cb173-7" aria-hidden="true" tabindex="-1"></a>            )</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 4
-##   species     M   Med    SD
-##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Droid    69.8  53.5  51.0
-## 2 Human    82.8  79    19.4</code></pre>
+<div id="task-6" class="section level2 unnumbered">
+<h2>Task 6</h2>
+<p>Compare the mean, median, and standard deviation of mass for all humans and droids. (Hint: remove all <code>NAs</code>)</p>
 </div>
-<div id="task-7-1" class="section level3 unnumbered">
-<h3>Task 7</h3>
-<p>Create a new variable in which you store the mass in gram. Add it to the data frame.</p>
-<p><em>Solution:</em></p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="solutions.html#cb175-1" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="ot">&lt;-</span> starwars_data <span class="sc">%&gt;%</span></span>
-<span id="cb175-2"><a href="solutions.html#cb175-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gr_mass =</span> mass<span class="sc">*</span><span class="dv">1000</span>)</span>
-<span id="cb175-3"><a href="solutions.html#cb175-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-4"><a href="solutions.html#cb175-4" aria-hidden="true" tabindex="-1"></a>starwars_data <span class="sc">%&gt;%</span> </span>
-<span id="cb175-5"><a href="solutions.html#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, species, mass, gr_mass)</span></code></pre></div>
-<pre><code>## # A tibble: 87 x 4
-##    name               species  mass gr_mass
-##    &lt;chr&gt;              &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1 Luke Skywalker     Human      77   77000
-##  2 C-3PO              Droid      75   75000
-##  3 R2-D2              Droid      32   32000
-##  4 Darth Vader        Human     136  136000
-##  5 Leia Organa        Human      49   49000
-##  6 Owen Lars          Human     120  120000
-##  7 Beru Whitesun lars Human      75   75000
-##  8 R5-D4              Droid      32   32000
-##  9 Biggs Darklighter  Human      84   84000
-## 10 Obi-Wan Kenobi     Human      77   77000
-## # ... with 77 more rows</code></pre>
-
+<div id="task-7" class="section level2 unnumbered">
+<h2>Task 7</h2>
+<p>Create a new variable in which you store the mass in gram (gr_mass). Add it to the data frame. Test whether your solution works by printing your data to the console, but only show the name, species, mass, and your new variable gr_mass.</p>
+<p>When you’re ready to look at the solutions, you can find them here: <a href="solutions.html#solutions-for-exercise-2">Solutions for Exercise 2</a>.</p>
+<p>Are you ready for some beautiful graphs? Then check out the next [Tutorial: Data visualization with ggplot].</p>
 </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="exercise-2-test-your-knowledge.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="tutorial-data-management-with-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
