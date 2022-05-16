@@ -351,6 +351,24 @@ You may need to add a “/” at the beginning like so:</p>
 </tr>
 </tbody>
 </table>
+<p>The drawback: Since Windows does not allow RStudio to save script files without permission (and the IfKW for some reason has not given the permission), you can’t save script files on the remote desktop. You can solve this with a workaround:</p>
+<ol style="list-style-type: decimal">
+<li>Paste your script into a text file before closing RStuio. E.g., WordPad is pre-installed. Save this file as .R.</li>
+<li>When you want to load your script in RStudio, right click on the .R file and choose “open with RStudio”.</li>
+</ol>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Image: Saving a Script File on a Remote Desktop</em></td>
+</tr>
+<tr class="even">
+<td align="left"><img src="images/Tut2_wd5.png" /></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="import-data-from-your-working-directory" class="section level2 hasAnchor" number="3.2">
