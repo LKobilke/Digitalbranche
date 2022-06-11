@@ -23,7 +23,7 @@
 <meta name="author" content="Lara Kobilke, IfKW, Ludwig-Maximilians-Universität München" />
 
 
-<meta name="date" content="2022-06-10" />
+<meta name="date" content="2022-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -622,7 +622,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb215-6"><a href="solutions.html#cb215-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relationship between age, climate change attitudes, </span><span class="sc">\n</span><span class="st"> and ideological extremity&quot;</span>,</span>
 <span id="cb215-7"><a href="solutions.html#cb215-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Negative emotions about climate change&quot;</span>) <span class="sc">+</span></span>
 <span id="cb215-8"><a href="solutions.html#cb215-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex, <span class="at">nrow=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="Digital-Media_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<p><img src="Digital-Media_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <p><em>Solution 2:</em></p>
 <p>Alternatively, you might enjoy this look that you can create with <code>facet_grid()</code>:</p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="solutions.html#cb216-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
@@ -633,18 +633,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb216-6"><a href="solutions.html#cb216-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relationship between age, climate change attitudes, and ideological extremity&quot;</span>,</span>
 <span id="cb216-7"><a href="solutions.html#cb216-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Negative emotions about climate change&quot;</span>) <span class="sc">+</span></span>
 <span id="cb216-8"><a href="solutions.html#cb216-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="fu">vars</span>(sex), <span class="fu">vars</span>(Party))</span></code></pre></div>
-<p><img src="Digital-Media_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<p><img src="Digital-Media_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p><em>Solution 3:</em></p>
 <p>Or even this look, also done with <code>facet_grid()</code>:</p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="solutions.html#cb217-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
 <span id="cb217-2"><a href="solutions.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age,<span class="at">y=</span>negemot, <span class="at">size=</span>ideology_ext, <span class="at">color =</span> Party)) <span class="sc">+</span></span>
 <span id="cb217-3"><a href="solutions.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb217-4"><a href="solutions.html#cb217-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">3</span>), <span class="at">name =</span> <span class="st">&quot;Ideological extremity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb217-4"><a href="solutions.html#cb217-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">3</span>), <span class="at">name =</span> <span class="st">&quot;Ideological extremity&quot;</span>) <span class="sc">+</span> <span class="co"># You can&#39;t guess the exact value that I&#39;ve used here. Just use whatever looks good for you and comes close to the solution.</span></span>
 <span id="cb217-5"><a href="solutions.html#cb217-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb217-6"><a href="solutions.html#cb217-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relationship between age, climate change attitudes, and ideological extremity&quot;</span>,</span>
 <span id="cb217-7"><a href="solutions.html#cb217-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Negative emotions about climate change&quot;</span>) <span class="sc">+</span></span>
 <span id="cb217-8"><a href="solutions.html#cb217-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>sex <span class="sc">+</span> Party)</span></code></pre></div>
-<p><img src="Digital-Media_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p><img src="Digital-Media_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
 
 </div>
 </div>
