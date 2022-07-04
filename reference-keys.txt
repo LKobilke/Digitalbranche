@@ -76,3 +76,12 @@ working-with-string-patterns
 working-with-regular-expressions
 take-aways-5
 additional-tutorials-5
+tidy-text-analysis
+what-is-tidy-text
+preprocessing-real-world-data
+tokenization
+practice-tokenization
+removing-stop-words
+practice-stop-word-removal
+lemmatizing-stemming
+practice-lemmatizing-stemming

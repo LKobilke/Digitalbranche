@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Exercise 3: Test your knowledge | R for digital media analysis</title>
+  <title> 7 Tidy text analysis | R for digital media analysis</title>
   <meta name="description" content="Digital industry: Current developments and challenges - B.A. Seminar at the IfKW, SS 2022" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Exercise 3: Test your knowledge | R for digital media analysis" />
+  <meta property="og:title" content=" 7 Tidy text analysis | R for digital media analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Digital industry: Current developments and challenges - B.A. Seminar at the IfKW, SS 2022" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Exercise 3: Test your knowledge | R for digital media analysis" />
+  <meta name="twitter:title" content=" 7 Tidy text analysis | R for digital media analysis" />
   
   <meta name="twitter:description" content="Digital industry: Current developments and challenges - B.A. Seminar at the IfKW, SS 2022" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tutorial-data-visualization-with-ggplot.html"/>
-<link rel="next" href="exercise-4-test-your-knowledge.html"/>
+<link rel="prev" href="exercise-5-test-your-knowledge.html"/>
+<link rel="next" href="solutions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -376,49 +376,218 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exercise-3-test-your-knowledge" class="section level1 unnumbered hasAnchor">
-<h1>Exercise 3: Test your knowledge<a href="exercise-3-test-your-knowledge.html#exercise-3-test-your-knowledge" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><strong>After working through Exercise 3, you’ll…</strong></p>
+<div id="tidy-text-analysis" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number"> 7</span> Tidy text analysis<a href="tidy-text-analysis.html#tidy-text-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>After working through Tutorial 7, you’ll…</p>
 <ul>
-<li>be able to see a graph and recreate it with <code>ggplot2</code></li>
-<li>be able to see a problem and customize a plot with <code>ggplot2</code> to solve it</li>
+<li>understand the concept of tidy text</li>
+<li>know how to combine tidy text management approaches with regular expressions</li>
+<li>be able to produce first analyses, e.g., word frequencies</li>
 </ul>
-<div id="task-1-2" class="section level2 unnumbered hasAnchor">
-<h2>Task 1<a href="exercise-3-test-your-knowledge.html#task-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The data set <em>glbwarm</em> comes pre-installed with the <code>processR</code> package that we will be working with soon. The data comprises 815 US individuals (417 females, 398 males) who agreed to engage in online questionnaires. They roughly represent the population of the United States.</p>
-<p>Let’s install / activate the <code>processR</code> package first and assign the glbwarm data to a source object.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="exercise-3-test-your-knowledge.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing/loading the package:</span></span>
-<span id="cb169-2"><a href="exercise-3-test-your-knowledge.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(processR)) {</span>
-<span id="cb169-3"><a href="exercise-3-test-your-knowledge.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;processR&quot;</span>); </span>
-<span id="cb169-4"><a href="exercise-3-test-your-knowledge.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(processR)</span>
-<span id="cb169-5"><a href="exercise-3-test-your-knowledge.html#cb169-5" aria-hidden="true" tabindex="-1"></a>} <span class="co">#load / install+load processR</span></span>
-<span id="cb169-6"><a href="exercise-3-test-your-knowledge.html#cb169-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-7"><a href="exercise-3-test-your-knowledge.html#cb169-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> processR<span class="sc">::</span>glbwarm</span></code></pre></div>
-<p>If you can’t install <code>processR</code> (it can be a bit buggy with newer versions of <code>R</code>) then just download the <em>glbwarm.csv</em> from Moodle and don’t use the code above (material folders). Load the data into R by following our tutorial: <a href="tutorial-working-with-data-files.html#import-data-from-your-working-directory">Import data from your working directory</a>, but remember the difference between <code>read_csv2</code> (simcolon-separated) and <code>read_csv</code> (comma-separated) and use the appropriate command.</p>
-<p>Familiarize yourself with the data set (<strong>Hint:</strong> use the <code>help()</code> / <code>?</code> function or visit this <a href="https://rdrr.io/cran/processR/man/glbwarm.html">Google page of the help function</a>) and then try to reproduce this plot with <code>dplyr</code> and <code>ggplot2</code>. (<strong>Hint:</strong> You can hide the legend by adding <code>theme(legend.position = "none")</code> to your plot.)</p>
-<p>You will need to do some data management with <code>dplyr</code> to create the correct labels for your <code>ggplot2</code> graph.</p>
-<p><img src="Digital-Media_files/figure-html/unnamed-chunk-128-1.png" width="60%" /></p>
-<p><span style="color: darkred;"><strong>Are you stuck and don’t know where to start? Watch this video to help you get started:</strong> <a href="https://cast.itunes.uni-muenchen.de/clips/RxGNL2kWdJ/vod/online.html">Click here.</a></span></p>
+<div id="what-is-tidy-text" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> What is tidy text?<a href="tidy-text-analysis.html#what-is-tidy-text" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since you’ve already learnt what tidy data is (see <a href="tutorial-data-management-with-tidyverse.html#tidy-data">Tidy data</a>), you can make an educated guess about the meaning of “tidy text”! In contrast to the ways text is commonly stored in existing text analysis approaches (e.g., as strings or document-term matrices), <strong><em>the tidy text format is a table with one single token per row</em></strong> (token = the unit of analysis). A token is a meaningful unit of text, i.e., a word, a sentence, or a paragraph that we are interested in using for further analysis. Splitting text into tokens is what we call the process of <em>tokenization</em>.</p>
+<p>Julia Silge and David Robinson’s <a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html">tidytext package</a> makes tokenizing into the tidy text format simple! Moreover, the <code>tidytext</code> package builds upon <code>tidyverse</code> and <code>ggplot2</code>, which makes it easy to use for you, since you already know these packages (see <a href="tutorial-data-management-with-tidyverse.html#tutorial-data-management-with-tidyverse">Tutorial: Data management with tidyverse</a> and <a href="tutorial-data-visualization-with-ggplot.html#tutorial-data-visualization-with-ggplot">Tutorial: Data visualization with ggplot</a> for a recap). That’s why we’ll focus on the <code>tidytext</code> in this breakout session.</p>
+<p>This tutorial is based on Julia Silge and David Robinson’s open-access book <a href="https://www.tidytextmining.com/">“Text Mining in R. A Tidy Approach”</a> and a lot of the following code was actually written by Julia Silge. If you want to dig deeper into tidy text analysis, you should check the book out. Both authors have also created an informative flowchart of the tidy text analysis workflow:</p>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Image: Tidy Text Analysis Workflow</em></td>
+</tr>
+<tr class="even">
+<td align="left"><img src="C:/Users/LaraK/Desktop/To-Do/PR-Erfolgskontrolle/LaraKobilke/images/Tut_tidytext_principles.JPG" /></td>
+</tr>
+</tbody>
+</table>
+<p>Before we start, install and load the <code>tidytext</code> package, the <code>tidyverse</code> package &amp; the <code>lubridate</code> package. <code>lubridate</code> will convert dates to a standard format, making it easier to create graphs using time data. Since tweets come with a date column, it’s always useful to have the <code>lubridate</code> package loaded.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="tidy-text-analysis.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing/loading the package:</span></span>
+<span id="cb217-2"><a href="tidy-text-analysis.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(tidytext)) {</span>
+<span id="cb217-3"><a href="tidy-text-analysis.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>); </span>
+<span id="cb217-4"><a href="tidy-text-analysis.html#cb217-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(tidytext)</span>
+<span id="cb217-5"><a href="tidy-text-analysis.html#cb217-5" aria-hidden="true" tabindex="-1"></a>} <span class="co">#load / install+load tidytext</span></span>
+<span id="cb217-6"><a href="tidy-text-analysis.html#cb217-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-7"><a href="tidy-text-analysis.html#cb217-7" aria-hidden="true" tabindex="-1"></a><span class="co"># installing/loading lubridate:</span></span>
+<span id="cb217-8"><a href="tidy-text-analysis.html#cb217-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lubridate)) {</span>
+<span id="cb217-9"><a href="tidy-text-analysis.html#cb217-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;lubridate&quot;</span>); </span>
+<span id="cb217-10"><a href="tidy-text-analysis.html#cb217-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(lubridate)</span>
+<span id="cb217-11"><a href="tidy-text-analysis.html#cb217-11" aria-hidden="true" tabindex="-1"></a>} <span class="co">#load / install+load lubridate</span></span>
+<span id="cb217-12"><a href="tidy-text-analysis.html#cb217-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-13"><a href="tidy-text-analysis.html#cb217-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb217-14"><a href="tidy-text-analysis.html#cb217-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb217-15"><a href="tidy-text-analysis.html#cb217-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="task-2-2" class="section level2 unnumbered hasAnchor">
-<h2>Task 2<a href="exercise-3-test-your-knowledge.html#task-2-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now, try to reproduce this graph. (<strong>Hint:</strong> You will need to recode the <em>ideology</em> variable in a way that higher values represent stronger attitudes, <em>independent of partisanship</em>.)</p>
-<p><img src="Digital-Media_files/figure-html/unnamed-chunk-130-1.png" width="60%" /></p>
+<div id="preprocessing-real-world-data" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Preprocessing real-world data<a href="tidy-text-analysis.html#preprocessing-real-world-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s investigate what the <code>tidytext</code> package is capable of and apply it to some real-world data. I’ve provided you with a data file that contains data collected with the Twitter API about the Russian aggression against Ukraine on Moodle.</p>
+<p>Let’s import the data into RStudio and inspect it using the <code>View()</code> function.</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="tidy-text-analysis.html#cb218-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ukraine_tweets2.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>) <span class="co"># Use UTF-8 encoding to keep the smileys</span></span>
+<span id="cb218-2"><a href="tidy-text-analysis.html#cb218-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-3"><a href="tidy-text-analysis.html#cb218-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">TZ=</span><span class="st">&quot;UTC&quot;</span>) <span class="co"># Twitter gives a UTC timestamp, so we&#39;ll need to set our own environment to UTC, too</span></span>
+<span id="cb218-4"><a href="tidy-text-analysis.html#cb218-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb218-5"><a href="tidy-text-analysis.html#cb218-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> lubridate<span class="sc">::</span><span class="fu">ymd_hms</span>(time)) <span class="sc">%&gt;%</span>  <span class="co"># turn the data column into a proper format with the lubridate package (this helps to create time series graphs!)</span></span>
+<span id="cb218-6"><a href="tidy-text-analysis.html#cb218-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span>
+<span id="cb218-7"><a href="tidy-text-analysis.html#cb218-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-8"><a href="tidy-text-analysis.html#cb218-8" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(data)</span></code></pre></div>
+<p>This data set contains a lot of information! We get to know who wrote the tweet (<em>user</em> and the unique <em>user.id</em>) and where this person lives (<em>user.location</em>). But most importantly, we can find the text of the tweet in the column <em>full_text</em>.</p>
+<p>First of all, let’s reduce some of these columns that we don’t need for our text analysis.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="tidy-text-analysis.html#cb219-1" aria-hidden="true" tabindex="-1"></a>data_short <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb219-2"><a href="tidy-text-analysis.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, user, full_text) <span class="co"># keeps time, user, and full_text</span></span>
+<span id="cb219-3"><a href="tidy-text-analysis.html#cb219-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-4"><a href="tidy-text-analysis.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(data_short)</span></code></pre></div>
+<p>Now, to get an overview, let’s create a visualization of the user’s who posted at least 18 tweets.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="tidy-text-analysis.html#cb220-1" aria-hidden="true" tabindex="-1"></a>data_short <span class="sc">%&gt;%</span></span>
+<span id="cb220-2"><a href="tidy-text-analysis.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(user) <span class="sc">%&gt;%</span></span>
+<span id="cb220-3"><a href="tidy-text-analysis.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb220-4"><a href="tidy-text-analysis.html#cb220-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb220-5"><a href="tidy-text-analysis.html#cb220-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> user, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb220-6"><a href="tidy-text-analysis.html#cb220-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>) <span class="sc">+</span></span>
+<span id="cb220-7"><a href="tidy-text-analysis.html#cb220-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb220-8"><a href="tidy-text-analysis.html#cb220-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.00</span>, <span class="at">hjust =</span> <span class="fl">0.00</span>)) <span class="sc">+</span></span>
+<span id="cb220-9"><a href="tidy-text-analysis.html#cb220-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Users who posted the most tweets about the Russian</span><span class="sc">\n</span><span class="st">aggression against Ukraine&quot;</span>,</span>
+<span id="cb220-10"><a href="tidy-text-analysis.html#cb220-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;User name&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Tweets&quot;</span>)</span></code></pre></div>
+<p><img src="Digital-Media_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<p>Now that we have had our overview, we will start with a process called <em>text normalization</em>. Text normalization is the endeavor to minimize the variability of a text by bringing it closer to a specified “standard” by reducing the quantity of divergent data that the computer has to deal with. Therefore, text normalization boots efficiency. Some techniques of text normalization will be covered in the next few section, for example, tokenization, stop word removal, and stemming/lemmatization.</p>
+<div id="tokenization" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Tokenization<a href="tidy-text-analysis.html#tokenization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I think we are ready to tokenize the data with the amazing <code>unnest_tokens()</code> function of the <code>tidytext</code> package. <em>Tokenization</em> is the process of breaking text into words (and punctuation marks). Since scientists are almost never interested in the punctuation marks and will delete them from the data set later anyway, <code>unnest_tokens()</code> comes with the nice bonus of setting all text to lowercase and deleting the punctuation marks directly, leaving only words (and numbers) as tokens.</p>
+<p>We will use the highly specialized <code>token = "tweets"</code> option of the <code>tidytext package</code> (by <a href="https://cran.r-project.org/web/packages/tokenizers/index.html">Mullen 2016</a>), which preserves hashtags and mentions of users with the @ sign from the direct punctuation removal process performed by <code>unnest tokens()</code>.</p>
+<p>Another common practice is to remove all tokens that contain numbers. Depending on the research question, it can also be helpful to remove URLs. For illustrative purposes, we will do both. But keep in mind that removing all URLs will take the option from you to compare what accounts have shared certain URLs more frequently than others.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="tidy-text-analysis.html#cb221-1" aria-hidden="true" tabindex="-1"></a>remove_reg <span class="ot">&lt;-</span> <span class="st">&quot;&amp;amp;|&amp;lt;|&amp;gt;&quot;</span> <span class="co"># &amp;amp; = &amp; in HTML,  &amp;lt; = &lt; in HTML,   &amp;gt; = &gt; in HTML</span></span>
+<span id="cb221-2"><a href="tidy-text-analysis.html#cb221-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-3"><a href="tidy-text-analysis.html#cb221-3" aria-hidden="true" tabindex="-1"></a>data_tknzd <span class="ot">&lt;-</span> data_short <span class="sc">%&gt;%</span></span>
+<span id="cb221-4"><a href="tidy-text-analysis.html#cb221-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tweet =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="co"># creates a new column that is called &quot;tweet&quot;, which contains a unique id for each individual tweet based on its row number</span></span>
+<span id="cb221-5"><a href="tidy-text-analysis.html#cb221-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(full_text, <span class="st">&quot;^RT&quot;</span>)) <span class="sc">%&gt;%</span>  <span class="co"># removes all retweets, i.e., tweets that are not unique but a reposts</span></span>
+<span id="cb221-6"><a href="tidy-text-analysis.html#cb221-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_remove_all</span>(full_text, remove_reg)) <span class="sc">%&gt;%</span>  <span class="co"># remove special HTML characters (&amp;, &lt;, &gt;)</span></span>
+<span id="cb221-7"><a href="tidy-text-analysis.html#cb221-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, full_text, <span class="at">token =</span> <span class="st">&quot;tweets&quot;</span>) <span class="sc">%&gt;%</span>   <span class="co"># using `to_lower = TRUE` with `token = &#39;tweets&#39;` can break URLs, so be sure that you don&#39;t need them</span></span>
+<span id="cb221-8"><a href="tidy-text-analysis.html#cb221-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^[:digit:]+$&quot;</span>)) <span class="sc">%&gt;%</span>  <span class="co"># remove all words that are numbers, e.g. &quot;2020&quot;</span></span>
+<span id="cb221-9"><a href="tidy-text-analysis.html#cb221-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^http&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># remove all words that are a URL, e.g., (https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf)</span></span>
+<span id="cb221-10"><a href="tidy-text-analysis.html#cb221-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^(</span><span class="sc">\\</span><span class="st">+)+$&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#  remove all words that only consist of plus signs (e.g., &quot;+++&quot;)</span></span>
+<span id="cb221-11"><a href="tidy-text-analysis.html#cb221-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^(</span><span class="sc">\\</span><span class="st">+)+(.)+$&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#  remove all words that only consist of plus signs followed by any other characters (e.g., &quot;+++eil+++&quot;)</span></span>
+<span id="cb221-12"><a href="tidy-text-analysis.html#cb221-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^(</span><span class="sc">\\</span><span class="st">-)+$&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#  remove all words that only consist of plus signs (e.g., &quot;---&quot;)</span></span>
+<span id="cb221-13"><a href="tidy-text-analysis.html#cb221-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^(</span><span class="sc">\\</span><span class="st">-)+(.)+$&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#  remove all words that only consist of minus signs followed by any other characters (e.g., &quot;---eil---&quot;)</span></span>
+<span id="cb221-14"><a href="tidy-text-analysis.html#cb221-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;^(.)+(</span><span class="sc">\\</span><span class="st">+)+$&quot;</span>)) <span class="co"># remove all words that start with some kind of word followed by plus signs (e.g., &quot;news+++&quot;)</span></span>
+<span id="cb221-15"><a href="tidy-text-analysis.html#cb221-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-16"><a href="tidy-text-analysis.html#cb221-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_tknzd)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   time                user     tweet text                                                                                                                        word 
+##   &lt;dttm&gt;              &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;                                                                                                                       &lt;chr&gt;
+## 1 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ @von~
+## 2 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ @euc~
+## 3 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ rubb~
+## 4 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ your 
+## 5 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ words
+## 6 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ and</code></pre>
+<p>As you can see, <code>unnest tokens()</code> in combination with the <code>token = "tweets"</code> option has kept all mentions as tokens. Add <code>%&gt;% filter(!str_detect(word, "^@"))</code> at the end of the above presented code if you want to remove these, too.</p>
+<p>Now, let’s check the total number of unique words in our tweet data:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="tidy-text-analysis.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;We are investigating &quot;</span>, <span class="fu">dim</span>(data_tknzd)[<span class="dv">1</span>], <span class="st">&quot; non-unique features / words and &quot;</span>, <span class="fu">length</span>(<span class="fu">unique</span>(data_tknzd<span class="sc">$</span>word)), <span class="st">&quot; unique features / words.&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;We are investigating  250299  non-unique features / words and  23579  unique features / words.&quot;</code></pre>
+<p><strong>Remember:</strong> <code>unnest tokens()</code> comes with a few handy preprocessing features, i.e., it already turns the text into a standardized format for further analysis:
+1. Tweet ids from which each word originated are kept in the data frame (column: <em>tweet</em>).
+2. All punctuation has already been taken care of, i.e., dots, questions marks, etc. have been removed.
+3. All uppercase letters have been taken care of, i.e., words have been transformed to lowercase.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 </div>
-<div id="task-3-2" class="section level2 unnumbered hasAnchor">
-<h2>Task 3<a href="exercise-3-test-your-knowledge.html#task-3-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Can you make a chart that breaks down the relationship between <em>age</em>, <em>negative emotions about climate change</em>, and <em>ideological extremity</em> for the different <em>sexes</em> AND <em>parties</em>?</p>
-<p><span style="font-size:70%"><strong>Hint:</strong> You can play around with which variables that you want to use as <em>x</em>, <em>y</em>, and as <em>color / size</em> variables. But if you want to have a recommendation to get you started: x = age, y = negative emotions about climate change, size = ideological extremity. But other combinations are valid, too! For instance, you could decide to map x = ideological extremity and size = age.</span></p>
-<p>When you’re ready to look at the solutions, you can find them here: <a href="solutions.html#solutions-for-exercise-3">Solutions for Exercise 3</a>.</p>
+<div id="practice-tokenization" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Practice: Tokenization<a href="tidy-text-analysis.html#practice-tokenization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now it’s your turn. I’ve added another data set to Moodle that deals with the shitstorm about the German influencer <em>Fynn Kliemann</em> on Twitter. You can read more about the scandal that started on the 6th of May 2022 <a href="https://www.augsburger-allgemeine.de/panorama/fynn-kliemann-ist-seine-karriere-nach-masken-skandal-vorbei-id62699096.html">here</a> if you feel that you need more information.</p>
+<p>Load the Kliemann data into RStudio. Use the tutorial code and to set the encoding. After loading the Kliemann data keep only the <em>time</em>, <em>user</em>, and <em>full_text</em> column.</p>
+<p>Next, try to tokenize the data. As an extra, delete all tokens that are mentions of other twitter users (i.e., that start with an @-smybol).</p>
+<p>For solutions see: <a href="solutions.html#solutions-for-exercise-6">Solutions for Exercise 6</a></p>
 </div>
+<div id="removing-stop-words" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Removing stop words<a href="tidy-text-analysis.html#removing-stop-words" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Next, we should get rid of stop words. Stop words are a group of words that are regularly used in a language. In English, stop words such as “the,” “is,” and “and” would qualify. Because stop words are so common, they don’t really tell us anything about the content of a tweet and what differentiates this tweet from other tweets. The <code>tidytext</code> package comes with a pre-installed stop word data set. Let’s save that data set to a source object called <em>stop_word_data</em>. This way, we can use it later.</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="tidy-text-analysis.html#cb225-1" aria-hidden="true" tabindex="-1"></a>stop_word_data <span class="ot">&lt;-</span> tidytext<span class="sc">::</span>stop_words</span>
+<span id="cb225-2"><a href="tidy-text-analysis.html#cb225-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-3"><a href="tidy-text-analysis.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stop_word_data, <span class="dv">20</span>) <span class="co"># prints the first 20 stop words to the console</span></span></code></pre></div>
+<pre><code>## # A tibble: 20 x 2
+##    word        lexicon
+##    &lt;chr&gt;       &lt;chr&gt;  
+##  1 a           SMART  
+##  2 a&#39;s         SMART  
+##  3 able        SMART  
+##  4 about       SMART  
+##  5 above       SMART  
+##  6 according   SMART  
+##  7 accordingly SMART  
+##  8 across      SMART  
+##  9 actually    SMART  
+## 10 after       SMART  
+## 11 afterwards  SMART  
+## 12 again       SMART  
+## 13 against     SMART  
+## 14 ain&#39;t       SMART  
+## 15 all         SMART  
+## 16 allow       SMART  
+## 17 allows      SMART  
+## 18 almost      SMART  
+## 19 alone       SMART  
+## 20 along       SMART</code></pre>
+<p>Now, let’s use these stop words to remove all tokens that are stop words from our tweet data.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="tidy-text-analysis.html#cb227-1" aria-hidden="true" tabindex="-1"></a>data_tknzd <span class="ot">&lt;-</span> data_tknzd <span class="sc">%&gt;%</span> </span>
+<span id="cb227-2"><a href="tidy-text-analysis.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> stop_word_data<span class="sc">$</span>word) <span class="sc">%&gt;%</span>  <span class="co"># removes all of our tokens that are stop words</span></span>
+<span id="cb227-3"><a href="tidy-text-analysis.html#cb227-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">str_remove_all</span>(stop_word_data<span class="sc">$</span>word, <span class="st">&quot;&#39;&quot;</span>)) <span class="co"># first removes all &#39; from the stop words (e.g., ain&#39;t -&gt; aint) and then removes all of our tokens that resemble these stop words without punctuation</span></span></code></pre></div>
+</div>
+<div id="practice-stop-word-removal" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Practice: Stop word removal<a href="tidy-text-analysis.html#practice-stop-word-removal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now it’s your turn. The Kliemann data is in German, so you can’t use the <code>tidytext</code> stop word list, which is meant for English text only. So install and load the ‘stopwords’ package that allows you to create a dataframe that contains German stop words by using this command: <code>stop_word_german &lt;- data.frame(word = stopwords::stopwords("de"), stringsAsFactors = FALSE)</code>. Create your German stop word list and use it to remove stop words from your tokens.</p>
+<p>For solutions see: <a href="solutions.html#solutions-for-exercise-6">Solutions for Exercise 6</a></p>
+</div>
+<div id="lemmatizing-stemming" class="section level3 hasAnchor" number="7.2.5">
+<h3><span class="header-section-number">7.2.5</span> Lemmatizing &amp; stemming<a href="tidy-text-analysis.html#lemmatizing-stemming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Minimizing words to their basic form (<em>lemmatizing</em>) or root (<em>stemming</em>) is a typical strategy of reducing the number of words in a text.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Stemming:</strong> A stem is the root form of a word without any suffixes. A stemming algorithm (= <em>stemmer</em>) removes the suffixes and returns the stem of the word. <em>Example1:</em> vengeance –&gt; vengeanc, or, if you use a very aggressive stemmer, vengeance –&gt; veng || <em>Example2</em>: legions –&gt; legion, or, if you use a very aggressive stemmer, legions –&gt; leg (this one is problematic!) || <em>Example3</em>: murdered –&gt; murder</p></li>
+<li><p><strong>Lemmatization:</strong> A lemma is a lexicon headword or, i.e., the dictionary-matched basic form of a word (as opposed to a stem created by eliminating or changing suffixes). Because a lemmatizing algorithm (= <em>lemmatizer</em>) performs dictionary matching, lemmatization is more computationally demanding than stemming. vengeance –&gt; vengeance || <em>Example2</em>: legions –&gt; legion || <em>Example3</em>: murdered –&gt; murdered (this one is problematic!)</p></li>
+</ol>
+<p>Most of the time, stemmers will make a lot of mistakes (e.g., legions –&gt; leg) and lemmatizers will make fewer mistakes. However, lemmatizers summarize fewer words (murdered –&gt; murdered) and therefore reduce the word count less efficiently than stemmers. Which technique of text normalization is preferred is always determined by the research question and the available data.</p>
+<p>For the ease of teaching, we will use stemming on our tweet data. However, you could also use lemmatization with the <a href="https://spacyr.quanteda.io/">spacyr package</a>.</p>
+<p>We’ll use Porter’s (1980) stemming algorthm, which is the most extensively used stemmer for the English language. Porter made the stemmer open-source, and you may use it with R using the <code>SnowballC</code> package (Bouchet-Valat 2020).</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="tidy-text-analysis.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing/loading SnowballC:</span></span>
+<span id="cb228-2"><a href="tidy-text-analysis.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(SnowballC)) {</span>
+<span id="cb228-3"><a href="tidy-text-analysis.html#cb228-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;SnowballC&quot;</span>); </span>
+<span id="cb228-4"><a href="tidy-text-analysis.html#cb228-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(SnowballC)</span>
+<span id="cb228-5"><a href="tidy-text-analysis.html#cb228-5" aria-hidden="true" tabindex="-1"></a>} <span class="co">#load / install+load SnowballC</span></span>
+<span id="cb228-6"><a href="tidy-text-analysis.html#cb228-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-7"><a href="tidy-text-analysis.html#cb228-7" aria-hidden="true" tabindex="-1"></a>data_tknzd <span class="ot">&lt;-</span> data_tknzd <span class="sc">%&gt;%</span></span>
+<span id="cb228-8"><a href="tidy-text-analysis.html#cb228-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">wordStem</span>(word))</span>
+<span id="cb228-9"><a href="tidy-text-analysis.html#cb228-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-10"><a href="tidy-text-analysis.html#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_tknzd)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   time                user     tweet text                                                                                                                        word 
+##   &lt;dttm&gt;              &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;                                                                                                                       &lt;chr&gt;
+## 1 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ @von~
+## 2 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ @euc~
+## 3 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ rubb~
+## 4 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ word 
+## 5 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ fell~
+## 6 2022-02-25 18:10:59 peekay14     1 @vonderleyen @EU_Commission rubbish! Your words and those of your fellow EU politicians are baseless and useless to the pe~ eu</code></pre>
+<p>Let’s check how many unique words we have in our tweet data after all of our preprocessing efforts:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="tidy-text-analysis.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;We are investigating &quot;</span>, <span class="fu">dim</span>(data_tknzd)[<span class="dv">1</span>], <span class="st">&quot; non-unique features / words and &quot;</span>, <span class="fu">length</span>(<span class="fu">unique</span>(data_tknzd<span class="sc">$</span>word)), <span class="st">&quot; unique features / words.&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;We are investigating  120056  non-unique features / words and  18792  unique features / words.&quot;</code></pre>
+</div>
+<div id="practice-lemmatizing-stemming" class="section level3 hasAnchor" number="7.2.6">
+<h3><span class="header-section-number">7.2.6</span> Practice: Lemmatizing &amp; stemming<a href="tidy-text-analysis.html#practice-lemmatizing-stemming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Please stem the Kliemann data with the PorterStemmer. Since we are working with German data, you’ll have to add the option <code>language = "german"</code> to the <code>wordStem()</code> function.</p>
+<p>For solutions see: <a href="solutions.html#solutions-for-exercise-6">Solutions for Exercise 6</a></p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>To disable this feature, use the to_lower = FALSE option.<a href="tidy-text-analysis.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="tutorial-data-visualization-with-ggplot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exercise-4-test-your-knowledge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercise-5-test-your-knowledge.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
